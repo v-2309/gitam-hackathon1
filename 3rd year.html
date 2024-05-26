@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject Selection</title>
+    <style>
+        body {
+            font-family: 'Ebrima', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        button {
+			padding-right: 25px;
+            background-color: #3498DB;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition-duration: 0.4s;
+        }
+
+        button:hover {
+		padding-right: 25px;
+            background-color: #7FB3D5;
+        }
+
+        #subjectContent {
+            display: none;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #333;
+            margin-top: 0;
+        }
+
+        .section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .section ul li {
+            margin-bottom: 5px;
+        }
+    </style>
+	<div style="text-align: left;">
+        <a href="desc.html" class="home-link">Back to Home Page</a>
+    </div>
+</head>
+<body>
+<body background="background4.jpg">
+    <table align="center">
+        <tbody><br><br><br><br><br><br>
+            <tr>
+                <td><button onclick="showSubject('Discrete Mathematics')">Discrete Mathematics</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="showSubject('Design Thinking')">Design Thinking</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="showSubject('Object Oriented Programming')">Object Oriented Programming</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="showSubject('Internet of Things')">Internet of Things</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="subjectContent">
+        <!-- Content for the selected subject will appear here -->
+    </div>
+
+    <script>
+        function showSubject(subject) {
+            // Clear previous content
+            document.getElementById("subjectContent").innerHTML = "";
+
+            // Create sections
+            var sections = ["Sample Papers", "Notes", "Textbooks", "Practice Questions"];
+            sections.forEach(function (section) {
+                var sectionDiv = document.createElement("div");
+                sectionDiv.classList.add("section");
+                sectionDiv.innerHTML = "<h2>" + section + "</h2><ul id='" + section.replace(/\s+/g, '') + "'>" + getPlaceholderText(subject, section) + "</ul>";
+                document.getElementById("subjectContent").appendChild(sectionDiv);
+            });
+
+            // Display subject name
+            var subjectHeading = document.createElement("h1");
+            subjectHeading.textContent = subject;
+            document.getElementById("subjectContent").prepend(subjectHeading);
+
+            // Show subject content
+            document.getElementById("subjectContent").style.display = "block";
+        }
+
+        function getPlaceholderText(subject, section) {
+            switch (subject) {
+                case "Discrete Mathematics":
+                    switch (section) {
+                        case "Sample Papers":
+                            return "<li>Discrete Mathematics Sample Papers Placeholder</li>";
+                        case "Notes":
+                            return "<li>Discrete Mathematics Notes Placeholder</li>";
+                        case "Textbooks":
+                            return "<li>Discrete Mathematics Textbooks Placeholder</li>";
+                        case "Practice Questions":
+                            return "<li>Discrete Mathematics Practice Questions Placeholder</li>";
+                        default:
+                            return "";
+                    }
+                case "Design Thinking":
+                    switch (section) {
+                        case "Sample Papers":
+                            return "<li>Design Thinking Sample Papers Placeholder</li>";
+                        case "Notes":
+                            return "<li>Design Thinking Notes Placeholder</li>";
+                        case "Textbooks":
+                            return "<li>Design Thinking Textbooks Placeholder</li>";
+                        case "Practice Questions":
+                            return "<li>Design Thinking Practice Questions Placeholder</li>";
+                        default:
+                            return "";
+                    }
+                case "Object Oriented Programming":
+                    switch (section) {
+                        case "Sample Papers":
+                            return "<li>Object Oriented Programming Sample Papers Placeholder</li>";
+                        case "Notes":
+                            return "<li>Object Oriented Programming Notes Placeholder</li>";
+                        case "Textbooks":
+                            return "<li>Object Oriented Programming Textbooks Placeholder</li>";
+                        case "Practice Questions":
+                            return "<li>Object Oriented Programming Practice Questions Placeholder</li>";
+                        default:
+                            return "";
+                    }
+                case "Internet of Things":
+                    switch (section) {
+                        case "Sample Papers":
+                            return "<li><a href='documents/IOT_Sample_Paper.pdf' download>Download Sample Papers PDF</a></li>";
+                        case "Notes":
+                            return "<li><a href='documents/IOT_Notes.pdf' download>Download Notes PDF</a></li>";
+                        case "Textbooks":
+                            return "<li><a href='documents/IOT_Textbook.pdf' download>Download Textbook PDF</a></li>";
+                        case "Practice Questions":
+                            return "<li><a href='documents/IOT_Practice.pdf' download>Download Practice Questions PDF</a></li>";
+                        default:
+                            return "";
+                    }
+                default:
+                    return "";
+            }
+			function goHome() {
+            window.location.href = 'desc.html'; 
+        }
+        }
+    </script>
+</body>
+</html>
